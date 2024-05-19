@@ -108,13 +108,15 @@ export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
       secure: true,
     })
 
-    let expression = 'folder=snaprealm';
+    let expression = 'folder=imaginify';
 
     if (searchQuery) {
       expression += ` AND ${searchQuery}`
     }
 
-    const { resources } = await cloudinary.search.expression(expression).execute();
+    const { resources } = await cloudinary.search
+      .expression(expression)
+      .execute();
 
     const resourceIds = resources.map((resource: any) => resource.public_id);
 
