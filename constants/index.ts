@@ -125,21 +125,21 @@ export const navLinks = [
       title: "Restore Image",
       subTitle: "Refine images by removing noise and imperfections",
       config: { restore: true },
-      icon: "image.svg",
+      icon: "https://res.cloudinary.com/dldblks5t/image/upload/v1715543836/curve-arrow_opr7wo.png",
     },
     removeBackground: {
       type: "removeBackground",
       title: "Background Remove",
       subTitle: "Removes the background of the image using AI",
       config: { removeBackground: true },
-      icon: "camera.svg",
+      icon: "https://res.cloudinary.com/dldblks5t/image/upload/v1715543835/delete-user_ldcwh6.png",
     },
     fill: {
       type: "fill",
       title: "Generative Fill",
       subTitle: "Enhance an image's dimensions using AI outpainting",
       config: { fillBackground: true },
-      icon: "stars.svg",
+      icon: "https://res.cloudinary.com/dldblks5t/image/upload/v1715543836/ai_mplqe1.png",
     },
     remove: {
       type: "remove",
@@ -148,7 +148,7 @@ export const navLinks = [
       config: {
         remove: { prompt: "", removeShadow: true, multiple: true },
       },
-      icon: "scan.svg",
+      icon: "https://res.cloudinary.com/dldblks5t/image/upload/v1715543836/delete_ecp09c.png",
     },
     recolor: {
       type: "recolor",
@@ -157,7 +157,7 @@ export const navLinks = [
       config: {
         recolor: { prompt: "", to: "", multiple: true },
       },
-      icon: "filter.svg",
+      icon: "https://res.cloudinary.com/dldblks5t/image/upload/v1715543836/color_qzx7x2.png",
     },
   };
   
