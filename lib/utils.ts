@@ -1,4 +1,3 @@
-
 /* eslint-disable prefer-const */
 /* eslint-disable no-prototype-builtins */
 import { type ClassValue, clsx } from "clsx";
@@ -16,11 +15,11 @@ export const handleError = (error: unknown) => {
   if (error instanceof Error) {
     // This is a native JavaScript error (e.g., TypeError, RangeError)
     console.error(error.message);
-    throw new Error(`Error: ${error.message}`);
+    throw error; // Re-throw the original error
   } else if (typeof error === "string") {
     // This is a string error message
     console.error(error);
-    throw new Error(`Error: ${error}`);
+    throw new Error(error); // Re-throw as a new Error with the string message
   } else {
     // This is an unknown type of error
     console.error(error);
@@ -51,7 +50,6 @@ const toBase64 = (str: string) =>
 export const dataUrl = `data:image/svg+xml;base64,${toBase64(
   shimmer(1000, 1000)
 )}`;
-// ==== End
 
 // FORM URL QUERY
 export const formUrlQuery = ({
@@ -94,7 +92,7 @@ export const debounce = (func: (...args: any[]) => void, delay: number) => {
   };
 };
 
-// GE IMAGE SIZE
+// GET IMAGE SIZE
 export type AspectRatioKey = keyof typeof aspectRatioOptions;
 export const getImageSize = (
   type: string,
