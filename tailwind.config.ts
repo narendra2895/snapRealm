@@ -17,15 +17,8 @@ module.exports = {
       },
     },
     extend: {
-      animation: {
-        spin: 'spin 1s linear infinite',
-      },
-      keyframes: {
-        spin: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        },
-      },
+      
+      
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -91,6 +84,10 @@ module.exports = {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
@@ -99,6 +96,7 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        spin: 'spin 1s linear infinite'
       },
     },
   },
