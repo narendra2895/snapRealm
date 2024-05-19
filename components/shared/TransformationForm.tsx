@@ -70,15 +70,19 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-
+  
+    console.log('Submitting form with values:', values);
+  
     if(data || image) {
       const transformationUrl = getCldImageUrl({
         width: image?.width,
         height: image?.height,
         src: image?.publicId,
         ...transformationConfig
-      })
-
+      });
+  
+      console.log('Transformation URL:', transformationUrl);
+  
       const imageData = {
         title: values.title,
         publicId: image?.publicId,
@@ -91,26 +95,28 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         aspectRatio: values.aspectRatio,
         prompt: values.prompt,
         color: values.color,
-      }
-
+      };
+  
+      console.log('Image data:', imageData);
+  
       if(action === 'Add') {
         try {
           const newImage = await addImage({
             image: imageData,
             userId,
             path: '/'
-          })
-
+          });
+  
           if(newImage) {
-            form.reset()
-            setImage(data)
-            router.push(`/transformations/${newImage._id}`)
+            form.reset();
+            setImage(data);
+            router.push(`/transformations/${newImage._id}`);
           }
         } catch (error) {
-          console.log(error);
+          console.error('Error adding image:', error);
         }
       }
-
+  
       if(action === 'Update') {
         try {
           const updatedImage = await updateImage({
@@ -120,19 +126,20 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             },
             userId,
             path: `/transformations/${data._id}`
-          })
-
+          });
+  
           if(updatedImage) {
-            router.push(`/transformations/${updatedImage._id}`)
+            router.push(`/transformations/${updatedImage._id}`);
           }
         } catch (error) {
-          console.log(error);
+          console.error('Error updating image:', error);
         }
       }
     }
-
-    setIsSubmitting(false)
+  
+    setIsSubmitting(false);
   }
+  
 
   const onSelectFieldHandler = (value: string, onChangeField: (value: string) => void) => {
     const imageSize = aspectRatioOptions[value as AspectRatioKey]
